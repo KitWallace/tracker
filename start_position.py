@@ -3,8 +3,6 @@
 from persistant import *
 from position import *
 
-position = Position()
-position.set("gps")
+position = Position("gps")
 
-
-position.update()
+position.update("/dev/gps1")

@@ -9,8 +9,8 @@ R =  3437.74677   #nautical miles
 
 class Position(Persistant) :
 
-  def __init__(self,latitude=0.0,longitude=0.0,altitude=0.0) :
-    
+  def __init__(self,name,latitude=0.0,longitude=0.0,altitude=0.0) :
+    self.name=name
     self.latitude = latitude
     self.longitude = longitude
     self.altitude = altitude
@@ -71,8 +71,8 @@ class Position(Persistant) :
     self.HDOP = data[8]
     return self
 
-  def update(self) :   
-    s = serial.Serial("/dev/ttyUSB0",4800)
+  def update(self,port) :   
+    s = serial.Serial(port,4800)
     while True:
        nmea = s.readline()
        if nmea.startswith("$GPRMC") :
