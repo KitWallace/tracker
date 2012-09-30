@@ -19,6 +19,7 @@ class Position(Persistant) :
     self.HDOP = 0.0
     self.satellites = 0
     self.dateTime= ""
+    self.put()
 
   def update_with_RMC(self, sent) :
     data= sent.split(",")
