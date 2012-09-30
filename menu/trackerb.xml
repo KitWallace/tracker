@@ -1,0 +1,23 @@
+<menu  name="tracker" title="GPS Tracker menu">
+        <item title="Logger"  action='"Logging every " + str(get("logger").value) + " seconds is " + get("logger").status' >
+            <item id="log" title="Logging"  action='"Logging is "+ get("logger").status'>    
+               <item action='"Logging is now " +get("logger").toggle().status' next="log"/>  
+            </item> 
+            <item title="Increase" action='"Logging every " + str(get("logger").increment().value) + " seconds"' next="log"/>
+            <item title="Decrease" action='"Logging every " + str(get("logger").decrement().value) + " seconds"' next="log"/>
+        </item>
+        <item title="Speedo"  action='"Speedo is "+ get("speed").status' >
+            <item id="speed" title="Speedo"  action='"Speedo is "+ get("speed").status'>    
+               <item action='"Speedo is now " +get("speed").toggle().status' next="speed"/>  
+            </item> 
+            <item title="Increase" action='"Report every " + str(get("speed").increment().value) + " seconds"' next="speed"/>
+            <item title="Decrease" action='"Report every " + str(get("speed").decrement().value) + " seconds"' next="speed"/>
+        </item>
+        <item title="Markers">
+               <item id="marker" title="Marker" action='"Marker is " + str(get("marker").value)'>
+                     <item action='"Logged " + str(get("track").log(get("marker").value)) + ". Marker now " +  str(get("marker").increment(1).value)' next="marker"/>
+               </item>
+               <item title="Increment" action='"Marker is " + str(get("marker").increment(1).value)' next="marker"/>
+               <item title="Decrement" action='"Marker is " + str(get("marker").decrement(1).value)' next="marker"/>
+        </item>
+</menu>
